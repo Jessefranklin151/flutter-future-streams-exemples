@@ -1,5 +1,6 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:streams_exemple/pages/streams/image_url_creator.dart';
 import 'package:streams_exemple/shared/buttons.dart';
 
 class StreamsPage extends StatefulWidget {
@@ -12,17 +13,23 @@ class StreamsPage extends StatefulWidget {
 }
 
 class _StreamsPageState extends State<StreamsPage> {
-  var stream = ImageUrlCreatorStream().stream;
+  var _count = 0;
+
+  _StreamsPageState() {
+    Timer.periodic(Duration(seconds: 3), (timer) {
+      var baseUrl = 'https://picsum.photos/id/$_count/300/300';
+      if (_count >= 20) {
+        _controller.close();
+      } else {
+        _controller.sink.add(baseUrl);
+        _count++;
+      }
+    });
+  }
 
   var textStyle = TextStyle(fontSize: 35);
 
-  routeToFutures() {
-    Navigator.of(context).pushReplacementNamed('/futures');
-  }
-
-  routeToStream() {
-    Navigator.of(context).pushReplacementNamed('/');
-  }
+  final _controller = StreamController<String>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +39,7 @@ class _StreamsPageState extends State<StreamsPage> {
       ),
       body: Center(
         child: StreamBuilder<Object>(
-            stream: stream,
+            stream: _controller.stream,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Container(
