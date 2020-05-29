@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Future and Streams',
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       theme: ThemeData(
         primarySwatch: Colors.blue,
