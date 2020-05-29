@@ -17,7 +17,7 @@ class FuturesPage extends StatefulWidget {
 }
 
 class _FuturesPageState extends State<FuturesPage> {
-  var textStyle = TextStyle(fontSize: 25);
+  var textStyle = TextStyle(fontSize: 15);
 
   var future = http.get('https://picsum.photos/v2/list?page=1');
 
@@ -38,13 +38,17 @@ class _FuturesPageState extends State<FuturesPage> {
               var imgList =
                   imgListJson.map((e) => LoremPicsumImage.fromJson(e));
               return Container(
+                height: 500,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      'Imagens carregadas quando o Future foi completado.',
-                      style: textStyle,
+                    Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Text(
+                        'Imagens carregadas quando o Future foi completado.',
+                        style: textStyle,
+                      ),
                     ),
-                    Spacer(),
                     CarouselSlider(
                       options: CarouselOptions(),
                       items: imgList
