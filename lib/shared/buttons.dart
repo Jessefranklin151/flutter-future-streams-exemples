@@ -15,10 +15,10 @@ class Buttons extends StatelessWidget {
 
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ButtonTheme(
-            minWidth: 200.0,
+            minWidth: (MediaQuery.of(context).size.width / 2) - 25,
             child: RaisedButton(
               onPressed: routeToFutures,
               color: Colors.blueAccent,
@@ -27,7 +27,7 @@ class Buttons extends StatelessWidget {
             ),
           ),
           ButtonTheme(
-            minWidth: 200.0,
+            minWidth: (MediaQuery.of(context).size.width / 2) - 25,
             child: RaisedButton(
               onPressed: routeToStream,
               color: Colors.blueAccent,
