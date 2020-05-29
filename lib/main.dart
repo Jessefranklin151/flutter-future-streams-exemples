@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Future and Streams',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/futures',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
