@@ -19,7 +19,8 @@ class FuturesPage extends StatefulWidget {
 class _FuturesPageState extends State<FuturesPage> {
   var textStyle = TextStyle(fontSize: 15);
 
-  var future = http.get('https://picsum.photos/v2/list?page=1');
+  var future = http.get('https://picsum.photos/v2/list?page=1')
+    .then((value) => Future.delayed(Duration(seconds: 5), () => value));
 
   @override
   Widget build(BuildContext context) {
